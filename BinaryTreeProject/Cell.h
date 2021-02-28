@@ -6,9 +6,12 @@ public:
 	Cell(int value);
 	
 	void add(int value);
-	void assign_value_to_cell(int value, Cell* cell);
 	bool contains(int value);
-	
-	Cell* left_cell_;
-	Cell* right_cell_;
+	Cell* find(int value);
+	Cell* find_min();
+
+	Cell* left_cell;
+	Cell* right_cell;
+
+	Cell* parent_cell;
 };

@@ -16,7 +16,5 @@ int main() {
 	(*binary_tree).add(15);
 	(*binary_tree).add(31);
 
-	//cout << (*binary_tree).contains(32) << endl;
-
 	binary_tree->print_tree();
 }

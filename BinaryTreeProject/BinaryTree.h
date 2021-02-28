@@ -8,11 +8,11 @@ public:
 	BinaryTree();
 	void add(int value);
 	bool contains(int value) const;
-	void print_tree() const;
+	void print_tree();
+	void remove(int value) const;
 
 private:
 	Cell* root_;
 
-	std::vector<int> sorted_tree_;
-	static void print_subtree(Cell* cell);
+	void print_subtree(Cell* cell);
 };

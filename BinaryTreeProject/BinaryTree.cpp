@@ -2,40 +2,31 @@
 
 #include <iostream>
 
-BinaryTree::BinaryTree() = default;
+BinaryTree::BinaryTree() {
+	root_ = nullptr;
+}
 
-void BinaryTree::add(int value)
-{
-	if(!root_)
-	{
+void BinaryTree::add(int value) {
+	if (!root_) {
 		root_ = new Cell(value);
 	}
-	else
-	{
+	else {
 		root_->add(value);
 	}
 }
 
-bool BinaryTree::contains(int value)
-{
+bool BinaryTree::contains(int value) const {
 	return (*root_).contains(value);
 }
 
-void BinaryTree::print_field()
-{
-	get_sorted_tree_from_specific_cell(root_);
-	for (auto i : sorted_tree_)
-	{
-		std::cout << i << std::endl;
-	}
+void BinaryTree::print_tree() const {
+	print_subtree(root_);
 }
 
-void BinaryTree::get_sorted_tree_from_specific_cell(Cell* cell)
-{
-	if(cell)
-	{
-		get_sorted_tree_from_specific_cell(cell->left_cell_);
-		sorted_tree_.push_back(cell->value_);
-		get_sorted_tree_from_specific_cell(cell->right_cell_);
+void BinaryTree::print_subtree(Cell* cell) {
+	if (cell) {
+		print_subtree(cell->left_cell_);
+		std::cout << cell->value_ << std::endl;
+		print_subtree(cell->right_cell_);
 	}
 }

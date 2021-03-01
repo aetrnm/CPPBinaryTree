@@ -24,7 +24,7 @@ void Cell::add(int value) {
 }
 
 bool Cell::contains(int value) {
-	return find_cell_by_value(value) != nullptr;
+	return find_cell_by_value(value);
 }
 
 Cell* Cell::find_cell_by_value(int value) {

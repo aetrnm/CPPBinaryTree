@@ -16,5 +16,5 @@ public:
 private:
 	Cell* root_;
 
-	void print_subTree(Cell* cell);
+	void print_sub_tree(Cell* cell);
 };

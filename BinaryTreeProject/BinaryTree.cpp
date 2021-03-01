@@ -21,19 +21,20 @@ bool BinaryTree::contains(int value) const {
 
 void BinaryTree::remove(int value) const {
 	if(!root_->contains(value)) {
-		throw "Value not in tree";
-	}
+		std::cout << "Value not in tree" << std::endl;
+		return;
+	}	
 	root_->remove_in_sub_tree(value);
 }
 
 void BinaryTree::print_tree() {
-	print_subTree(root_);
+	print_sub_tree(root_);
 }
 
-void BinaryTree::print_subTree(Cell* cell) {
+void BinaryTree::print_sub_tree(Cell* cell) {
 	if (cell) {
-		print_subTree(cell->left_cell);
-		std::cout << cell->value_ << std::endl;
-		print_subTree(cell->right_cell);
+		print_sub_tree(cell->left_cell);
+		std::cout << cell->value_ << " ";
+		print_sub_tree(cell->right_cell);
 	}
 }

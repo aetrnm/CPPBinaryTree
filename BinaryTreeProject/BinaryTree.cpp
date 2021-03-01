@@ -20,26 +20,20 @@ bool BinaryTree::contains(int value) const {
 }
 
 void BinaryTree::remove(int value) const {
-	Cell* cellToRemove = root_->find(value);
-
-	if(cellToRemove->right_cell) {
-		Cell* replacementCell = cellToRemove->right_cell->find_min_parent();
-		if(!replacementCell) {
-			replacementCell = cellToRemove->right_cell;
-		}
+	if(!root_->contains(value)) {
+		throw "Value not in tree";
 	}
-
-	
+	root_->remove_in_sub_tree(value);
 }
 
 void BinaryTree::print_tree() {
-	print_subtree(root_);
+	print_subTree(root_);
 }
 
-void BinaryTree::print_subtree(Cell* cell) {
+void BinaryTree::print_subTree(Cell* cell) {
 	if (cell) {
-		print_subtree(cell->left_cell);
+		print_subTree(cell->left_cell);
 		std::cout << cell->value_ << std::endl;
-		print_subtree(cell->right_cell);
+		print_subTree(cell->right_cell);
 	}
 }

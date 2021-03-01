@@ -5,7 +5,9 @@
 
 class BinaryTree {
 public:
+	//Constructor
 	BinaryTree();
+	
 	void add(int value);
 	bool contains(int value) const;
 	void print_tree();
@@ -14,5 +16,5 @@ public:
 private:
 	Cell* root_;
 
-	void print_subtree(Cell* cell);
+	void print_subTree(Cell* cell);
 };

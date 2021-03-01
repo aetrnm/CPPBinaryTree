@@ -14,6 +14,8 @@ int main() {
 	(*binary_tree).add(12321);
 	(*binary_tree).add(1);
 
+	binary_tree->remove(22); //ok
+	binary_tree->remove(212); //non-existing value also ok but it won't remove the value
 
 	binary_tree->print_tree();
 }

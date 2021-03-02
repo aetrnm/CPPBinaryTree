@@ -10,6 +10,7 @@ public:
 
 	Cell* left_cell;
 	Cell* right_cell;
+	
 	Cell* find_and_remove_min_cell_in_sub_tree();
 private:
 	Cell* find_cell_by_value(int value);

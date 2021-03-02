@@ -1,6 +1,7 @@
 #include "BinaryTree.h"
 
 #include <iostream>
+#include <algorithm>
 
 BinaryTree::BinaryTree() {
 	root_ = nullptr;
@@ -15,7 +16,7 @@ void BinaryTree::add(int value) {
 	}
 }
 
-bool BinaryTree::contains(int value) const {
+bool BinaryTree::contains(int value) {
 	return (*root_).contains(value);
 }
 
@@ -30,6 +31,10 @@ void BinaryTree::remove(int value) {
 	else {
 		root_->remove_in_sub_tree(value);
 	}
+}
+
+int BinaryTree::get_height() {
+	return std::max(get_height_of_sub_tree(root_->right_cell), get_height_of_sub_tree(root_->left_cell));
 }
 
 void BinaryTree::print_tree() {
@@ -70,4 +75,11 @@ void BinaryTree::remove_root() {
 		}
 	}
 	root_ = cellToRPLC;
+}
+
+int BinaryTree::get_height_of_sub_tree(Cell* cell) {
+	if (!cell) {
+		return 0;
+	}
+	return 1 + std::max(get_height_of_sub_tree(cell->left_cell), get_height_of_sub_tree(cell->right_cell));
 }

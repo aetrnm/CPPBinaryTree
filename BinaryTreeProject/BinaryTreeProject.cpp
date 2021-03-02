@@ -10,12 +10,14 @@ int main() {
 	(*binary_tree).add(10);
 	(*binary_tree).add(22);
 	(*binary_tree).add(4);
+	(*binary_tree).add(8);
+	(*binary_tree).add(7);
+	(*binary_tree).add(9);
 	(*binary_tree).add(15);
-	(*binary_tree).add(12321);
-	(*binary_tree).add(1);
+	(*binary_tree).add(31);
+	(*binary_tree).add(6);
 
-	binary_tree->remove(22); //ok
-	binary_tree->remove(212); //non-existing value also ok but it won't remove the value
-
+	cout << "Height is: " << binary_tree->get_height() << endl;
+	
 	binary_tree->print_tree();
 }

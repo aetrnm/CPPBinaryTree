@@ -25,7 +25,7 @@ void BinaryTree::remove(int value) {
 		std::cout << "Value not in tree" << std::endl;
 		return;
 	}
-	if (root_->value_ == value) {
+	if (root_->get_value() == value) {
 		remove_root();
 	}
 	else {
@@ -50,7 +50,7 @@ void BinaryTree::print_tree() {
 void BinaryTree::print_sub_tree(Cell* cell) {
 	if (cell) {
 		print_sub_tree(cell->left_cell);
-		std::cout << cell->value_ << " ";
+		std::cout << cell->get_value() << " ";
 		print_sub_tree(cell->right_cell);
 	}
 	
@@ -60,10 +60,10 @@ void BinaryTree::remove_root() {
 	Cell* cellToRPLC = nullptr;
 	if(root_->left_cell || root_->right_cell) {
 		if (!root_->left_cell) {
-			cellToRPLC = new Cell(root_->right_cell->value_);
+			cellToRPLC = new Cell(root_->right_cell->get_value());
 		}
 		else if (!root_->right_cell) {
-			cellToRPLC = new Cell(root_->left_cell->value_);
+			cellToRPLC = new Cell(root_->left_cell->get_value());
 		}
 		else if (root_->right_cell) {
 

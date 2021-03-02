@@ -1,8 +1,8 @@
 #pragma once
 class Cell {
 public:
-	int value_;
 	Cell(int value);
+	int get_value();
 
 	void add(int value);
 	bool contains(int value);
@@ -13,5 +13,7 @@ public:
 	
 	Cell* find_and_remove_min_cell_in_sub_tree();
 private:
+	int value_;
+	
 	Cell* find_cell_by_value(int value);
 };

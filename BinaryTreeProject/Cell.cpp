@@ -1,16 +1,18 @@
 #include "Cell.h"
 
-Cell::Cell(int value) {
+#include <iostream>
+
+Cell::Cell(const int value) {
 	this->value_ = value;
 	this->left_cell = nullptr;
 	this->right_cell = nullptr;
 }
 
-int Cell::get_value() {
+int Cell::get_value() const {
 	return value_;
 }
 
-void Cell::add(int value) {
+void Cell::add(const int value) {
 	Cell** cell = nullptr;
 	if (value < this->get_value()) {
 		cell = &left_cell;
@@ -27,11 +29,11 @@ void Cell::add(int value) {
 	}
 }
 
-bool Cell::contains(int value) {
+bool Cell::contains(const int value) {
 	return find_cell_by_value(value);
 }
 
-Cell* Cell::find_cell_by_value(int value) {
+Cell* Cell::find_cell_by_value(const int value) {
 	if (this->get_value() == value) {
 		return this;
 	}
@@ -55,7 +57,7 @@ Cell* Cell::find_and_remove_min_cell_in_sub_tree() {
 	return this->left_cell->find_and_remove_min_cell_in_sub_tree();
 }
 
-Cell* Cell::remove_in_sub_tree(int value) {
+Cell* Cell::remove_in_sub_tree(const int value) {
 	if (value < this->get_value()) {
 		this->left_cell = this->left_cell->remove_in_sub_tree(value);
 		return this;
@@ -78,4 +80,14 @@ Cell* Cell::remove_in_sub_tree(int value) {
 	cell_to_remove->left_cell = this->left_cell;
 	cell_to_remove->right_cell = this->right_cell;
 	return cell_to_remove;
+}
+
+void Cell::print_sub_tree() const {
+	left_cell->print_sub_tree();
+	std::cout << value_ << " ";
+	right_cell->print_sub_tree();
+}
+
+int Cell::get_height_of_sub_tree() const {
+	return 1 + std::max(left_cell->get_height_of_sub_tree(), right_cell->get_height_of_sub_tree());
 }

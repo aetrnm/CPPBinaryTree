@@ -1,18 +1,17 @@
 #include "BinaryTree.h"
 
 #include <iostream>
-#include <algorithm>
 
 BinaryTree::BinaryTree() {
 	root_ = nullptr;
 }
 
 void BinaryTree::add(const int value) {
-	if (!root_) {
-		root_ = new Cell(value);
+	if (root_) {
+		root_->add(value);
 	}
 	else {
-		root_->add(value);
+		root_ = new Cell(value);
 	}
 }
 

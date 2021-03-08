@@ -28,12 +28,7 @@ void BinaryTree::remove(const int value) {
 			std::cout << "Value not in tree" << std::endl;
 			return;
 		}
-		if (root_->get_value() == value) {
-			remove_root();
-		}
-		else {
-			root_->remove_in_sub_tree(value);
-		}
+		root_ = root_->remove_in_sub_tree(value);
 	}
 }
 
@@ -52,25 +47,4 @@ void BinaryTree::print_tree() const {
 	else {
 		std::cout << "Tree is empty!" << std::endl;
 	}
-}
-
-void BinaryTree::remove_root() {
-	Cell* cell_to_replace = nullptr;
-	if(root_->left_cell || root_->right_cell) {
-		if (!root_->left_cell) {
-			cell_to_replace = new Cell(root_->right_cell->get_value());
-		}
-		else if (!root_->right_cell) {
-			cell_to_replace = new Cell(root_->left_cell->get_value());
-		}
-		else if (root_->right_cell) {
-
-			cell_to_replace = root_->right_cell->find_and_remove_min_cell_in_sub_tree();
-			cell_to_replace->right_cell = root_->right_cell;
-		}
-		else if (root_->left_cell) {
-			cell_to_replace->left_cell = root_->left_cell;
-		}
-	}
-	root_ = cell_to_replace;
 }

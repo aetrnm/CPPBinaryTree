@@ -17,6 +17,7 @@ int main() {
 	binary_tree->add(31);
 	binary_tree->add(6);
 
+	binary_tree->remove(10);
 	binary_tree->remove(6);
 
 	cout << "Height is: " << binary_tree->get_height() << endl;;

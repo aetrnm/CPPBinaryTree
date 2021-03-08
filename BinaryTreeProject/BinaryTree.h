@@ -13,5 +13,4 @@ public:
 
 private:
 	Cell* root_;
-	void remove_root();
 };
